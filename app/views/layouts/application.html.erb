@@ -7,6 +7,11 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+  <% if(current_user) %>
+    <p class="ui_action"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></p> 
+  <% elsif(controller_name != "sessions" && !current_user) %>
+    <p class="ui_action"><%= link_to "Sign in", new_user_session_path %></p> 
+  <% end %>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 

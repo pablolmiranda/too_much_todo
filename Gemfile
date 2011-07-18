@@ -12,8 +12,11 @@ gem 'devise'
 gem 'haml'
 gem 'responders'
 
- group :development, :test do
-   gem 'capybara'
-   gem 'rspec'
-   gem 'rspec-rails'
- end
+group :development, :test do
+  gem 'capybara'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem "factory_girl_rails", "~> 1.1.rc1"
+  gem "database_cleaner"
+  gem "escape_utils"
+end

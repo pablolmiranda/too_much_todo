@@ -18,5 +18,17 @@ describe User do
       @user.should_not be_valid
     end
 
-  end
+  end # validations
+
+  describe "todo list association" do
+    
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+    end
+
+    it "should respond to todo_lists" do
+      @user.should respond_to(:todo_lists)
+    end
+
+  end # todo list association
 end

@@ -1,2 +1,8 @@
+<% if @user.avatar.url %>
+  <p><%= image_tag @user.avatar.url, :alt => @user.name %></p>
+<% end %>
+
 <h2><%= @user.name %></h2>
-<p>Find me in app/views/profile/show.html.erb</p>
+<h3>My ToDo Lists</h3>
+<%= render :partial => "shared/todo_list", :collection => @user.todo_lists %>
+<%= debug( @user ) if Rails.env.development? %>

@@ -2,5 +2,7 @@
 db/*.sqlite3
 log/*.log
 tmp/
+uploads/
+public/uploads/
 *.swp
 toomuchtodo_questions.txt

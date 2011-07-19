@@ -32,6 +32,7 @@ feature "Site sign up", %q{
 
   background do
     @attr = FactoryGirl.attributes_for(:user)
+    @avatar = "#{RAILS_ROOT}/spec/fixtures/avatar.jpg"
   end
 
   scenario "Check sign up path" do
@@ -42,6 +43,7 @@ feature "Site sign up", %q{
   scenario "Site sign up" do
     visit "/sign_up"
     fill_in "Name", :with => @attr[:name]
+    attach_file("Avatar", @avatar)
     fill_in "Email", :with => @attr[:email]
     fill_in "Password", :with => @attr[:password]
     fill_in :user_password_confirmation, :with => @attr[:password_confirmation]

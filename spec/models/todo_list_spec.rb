@@ -22,21 +22,33 @@ describe TodoList do
     todo_list.should_not be_valid
   end
 
-  describe "user association" do
+  describe "associations" do
 
     before(:each) do
       @todo_list = @user.todo_lists.create!(@attr)
     end
 
-    it "should respond to user" do
-      @todo_list.should respond_to(:user)
+    describe "user association" do
+
+      it "should respond to user" do
+	@todo_list.should respond_to(:user)
+      end
+
+      it "should reference the right user" do
+	@todo_list.user_id.should == @user.id
+	@todo_list.user.should == @user
+      end
+
+    end # user association
+
+    describe "relationship associations" do
+      
+      it "should respond to relationships" do
+	@todo_list.should respond_to(:relationships)
+      end
+    
     end
 
-    it "should reference the right user" do
-      @todo_list.user_id.should == @user.id
-      @todo_list.user.should == @user
-    end
-
-  end # user association
+  end # associations
 
 end

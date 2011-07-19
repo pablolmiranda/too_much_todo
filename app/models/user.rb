@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
     :processing => true
 
   has_many :todo_lists 
+  has_many :relationships
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :avatar, :avatar_cache, :remove_avatar

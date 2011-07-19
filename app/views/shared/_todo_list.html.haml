@@ -1,1 +1,4 @@
-.todo_list{ :class => "#{todo_list.is_private? ? "private":"public"}"}= todo_list.name 
+.todo_list{ :class => "#{todo_list.is_private? ? "private":"public"}"}
+ = todo_list.name
+ - if params[:id].to_i != current_user.id
+  %span= link_to 'Follow', root_path, :id => "list-#{todo_list.id}" 

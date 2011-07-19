@@ -20,15 +20,28 @@ describe User do
 
   end # validations
 
-  describe "todo list association" do
-    
+  describe "associations" do
+
     before(:each) do
       @user = FactoryGirl.create(:user)
     end
 
-    it "should respond to todo_lists" do
-      @user.should respond_to(:todo_lists)
-    end
+    describe "todo list association" do
+    
+      it "should respond to todo_lists" do
+	@user.should respond_to(:todo_lists)
+      end
 
-  end # todo list association
+    end # todo list association
+
+    describe "relationship association" do
+
+      it "should respond to relationships" do
+	@user.should respond_to(:relationships)
+      end
+
+    end # relationship association
+
+  end # associations
+
 end

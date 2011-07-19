@@ -9,11 +9,17 @@ describe TodoList do
   end
 
   it "should create a new instance given valid attributes" do
-    @user.todo_lists.create!(@attr)
+    TodoList.create!(@attr)
   end
 
-  it "should require a user id"
-    @
+  it "should require a name" do
+    todo_list = TodoList.new(@attr.merge!( :name => ""))
+    todo_list.should_not be_valid
+  end
+
+  it "should require a user id" do
+    todo_list = TodoList.new(@attr.merge!(:user_id => ""))
+    todo_list.should_not be_valid
   end
 
   describe "user association" do

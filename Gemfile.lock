@@ -58,6 +58,9 @@ GEM
     ffi (1.0.9)
     haml (3.1.2)
     i18n (0.6.0)
+    jquery-rails (1.0)
+      rails (~> 3.0)
+      thor (~> 0.14)
     json_pure (1.5.3)
     mail (2.2.19)
       activesupport (>= 2.3.6)
@@ -134,6 +137,7 @@ DEPENDENCIES
   escape_utils
   factory_girl_rails (~> 1.1.rc1)
   haml
+  jquery-rails
   mini_magick
   rails (= 3.0.5)
   responders

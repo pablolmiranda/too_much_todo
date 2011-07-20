@@ -46,8 +46,12 @@ describe TodoList do
       it "should respond to relationships" do
 	@todo_list.should respond_to(:relationships)
       end
+
+      it "should respond to follwers method" do
+	@todo_list.should respond_to(:followers)
+      end
     
-    end
+    end #relationship associations
 
   end # associations
 

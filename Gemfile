@@ -12,6 +12,7 @@ gem 'mini_magick'
 gem 'devise'
 gem 'haml'
 gem 'responders'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'capybara'

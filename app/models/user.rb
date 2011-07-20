@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
     :processing => true
 
   has_many :todo_lists 
-  has_many :relationships
+  has_many :relationships, :foreign_key => "follower_id", :dependent => :destroy
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :avatar, :avatar_cache, :remove_avatar

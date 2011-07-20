@@ -2,13 +2,13 @@ class CreateRelationships < ActiveRecord::Migration
   def self.up
     create_table :relationships do |t|
       t.integer :follower_id
-      t.integer :todo_list_id
+      t.integer :followed_list_id
 
       t.timestamps
     end
 
     add_index :relationships, :follower_id
-    add_index :relationships, :todo_list_id
+    add_index :relationships, :followed_list_id
 
   end
 

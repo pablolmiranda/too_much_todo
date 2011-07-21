@@ -7,7 +7,7 @@ class TaskListController < ApplicationController
   end
 
   def create
-    task_list = current_user.todo_lists.build(params[:task_list]["todo_list"])
+    task_list = current_user.todo_lists.build(params["task_list"])
     if task_list.save
       respond_with task_list do |format|
 	format.html { redirect_to profile_path(current_user) }

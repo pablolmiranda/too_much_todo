@@ -1,0 +1,4 @@
+%h2 Create ToDo list
+= simple_form_for @todo_list, {:as => :task_list, :url => task_list_path(), :method => :put} do |f| 
+  = render :partial => "shared/todo_list_form", :locals => { :f => f} 
+

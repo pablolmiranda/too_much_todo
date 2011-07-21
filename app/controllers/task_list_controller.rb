@@ -1,7 +1,8 @@
 class TaskListController < ApplicationController
   respond_to :html, :js
   responders :flash 
-  before_filter :authenticate_user!, :except => [:show]
+  before_filter :authenticate_user!
+
   def new
     @todo_list = current_user.todo_lists.build()
     @todo_list.todo_list_items.build

@@ -9,7 +9,7 @@ FactoryGirl.define do
   factory :todo_list do
     user_id 1
     name "My first List"
-    is_private true
+    is_private false
   end
 
   factory :todo_list_item do

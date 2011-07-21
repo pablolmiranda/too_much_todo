@@ -32,7 +32,7 @@ feature "Site sign up", %q{
 
   background do
     @attr = FactoryGirl.attributes_for(:user)
-    @avatar = "#{RAILS_ROOT}/spec/fixtures/avatar.jpg"
+    @avatar = "#{::Rails.root.to_s}/spec/fixtures/avatar.jpg"
   end
 
   scenario "Check sign up path" do

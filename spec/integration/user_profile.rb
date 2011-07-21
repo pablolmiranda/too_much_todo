@@ -25,7 +25,7 @@ feature "Show todo list follow link", %q{
 
   background do
     @user = FactoryGirl.create(:user)
-    @another_user = FactoryGirl.create(:user, :email => "another@toomuchtodo.com")
+    @another_user = FactoryGirl.create(:user, :name => "Another User", :email => "another@toomuchtodo.com")
     @first_list = FactoryGirl.create(:todo_list, :user_id => @another_user.id )
     integration_sign_in(@user)
   end

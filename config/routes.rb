@@ -1,13 +1,15 @@
 Toomuchtodo::Application.routes.draw do
 
-  resources :profile, :only => [ :show ]
+  resources :profile do
+    resources :task_list, :controller => "profile/task_list"
+    member do
+      get :show
+    end
+  end
+
   get "site/index"
 
   devise_for :users
-
-  resources :users do 
-    resources :task_list, :controller => "users/task_list"
-  end
 
   resources :task_list do
     member do

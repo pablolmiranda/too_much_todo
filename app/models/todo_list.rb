@@ -15,4 +15,8 @@ class TodoList < ActiveRecord::Base
   validates :name, :presence => true
   validates :user_id, :presence => true
 
+  def has_followers?
+    followers.count > 0
+  end
+
 end

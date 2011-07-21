@@ -1,9 +1,4 @@
 %h2 Create ToDo list
 = simple_form_for @todo_list, {:as => :task_list, :url => task_list_index_path()} do |f| 
-  = f.input :name 
-  = f.input :is_private 
-  %div#todo_list_items
-    = f.fields_for :todo_list_items do |item_form| 
-      = render :partial => "shared/todo_list_item_form", :locals => { :form => item_form } 
-  %div= add_todo_list_item_link(f, @todo_list)
+  = render :partial => "shared/todo_list_form", :locals => { :f => f} 
   = f.submit "Create" 

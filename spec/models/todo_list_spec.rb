@@ -50,6 +50,20 @@ describe TodoList do
       it "should respond to follwers method" do
 	@todo_list.should respond_to(:followers)
       end
+
+      it "should respond to has_followers?" do
+	@todo_list.should respond_to(:has_followers?)
+      end
+
+      it "should not have any followers" do
+	@todo_list.should_not have_followers	
+      end
+
+      it "should has followers" do
+	another_user = FactoryGirl.create(:user, :email => "another@toomuchtodo.com" )
+	another_user.follow!(@todo_list)
+	@todo_list.should have_followers
+      end
     
     end #relationship associations
 

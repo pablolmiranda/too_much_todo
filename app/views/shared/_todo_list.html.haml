@@ -1,5 +1,9 @@
-- if current_user && params[:id].to_i != current_user.id
- - if current_user.following?(todo_list)
-  = render :partial => 'shared/unfollow', :object => todo_list, :as => :todo_list 
- - else
-  = render :partial => 'shared/follow', :object => todo_list, :as => :todo_list 
+- if current_user.id == params[:id].to_i
+ #todo_list{ :id => "todo_list-#{todo_list.id}"}
+  = todo_list.name
+- else
+ - if !todo_list.is_private?
+  - if current_user.following?(todo_list)
+   = render :partial => 'shared/unfollow', :object => todo_list, :as => :todo_list 
+  - else
+   = render :partial => 'shared/follow', :object => todo_list, :as => :todo_list 

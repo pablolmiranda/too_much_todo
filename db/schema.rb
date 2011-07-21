@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110719232713) do
+ActiveRecord::Schema.define(:version => 20110721115930) do
 
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(:version => 20110719232713) do
 
   add_index "relationships", ["followed_list_id"], :name => "index_relationships_on_followed_list_id"
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
+  create_table "todo_list_items", :force => true do |t|
+    t.string   "text"
+    t.integer  "todo_list_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "todo_lists", :force => true do |t|
     t.string   "name"

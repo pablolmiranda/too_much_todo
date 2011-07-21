@@ -4,6 +4,7 @@ class TaskListController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   def new
     @todo_list = current_user.todo_lists.build()
+    @todo_list.todo_list_items.build
   end
 
   def create

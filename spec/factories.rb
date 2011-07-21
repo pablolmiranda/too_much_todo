@@ -11,4 +11,9 @@ FactoryGirl.define do
     name "My first List"
     is_private true
   end
+
+  factory :todo_list_item do
+    todo_list_id 1
+    text "Simple task"
+  end
 end

@@ -53,6 +53,19 @@ describe TodoList do
     
     end #relationship associations
 
+    describe "todo list item association" do
+
+      it "should respond to todo_list_items" do
+	@todo_list.should respond_to(:todo_list_items)
+      end
+
+      it "should include the right todo list item" do
+	@todo_list_item = @todo_list.todo_list_items.create(:text => "Simple task")
+	@todo_list.todo_list_items.should include(@todo_list_item)
+      end
+
+    end # todo list item association
+
   end # associations
 
 end

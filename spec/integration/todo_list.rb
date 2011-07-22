@@ -37,9 +37,20 @@ feature "Show remove link", %q{
     integration_sign_in(@user)
   end
 
-  scenario "Show remove todo list" do
+  scenario "Show todo list remove link" do
     visit profile_task_list_path(@user, @todo_list)
-    page.should have_selector("a", :href => "a#delete_list-#{@todo_list.id}", :content => "Delete")
+    page.should have_selector("a#delete_list-#{@todo_list.id}", :href => profile_task_list_path(@user, @todo_list), :content => "Delete")
+  end
+
+  scenario "Show todo list remove link after all user unfollow the todo list" do
+    @another_user = FactoryGirl.create(:user, :email => "another@toomuchtodo.com")
+    @another_user.follow!(@todo_list)
+    visit profile_task_list_path(@user, @todo_list)
+    page.should_not have_selector("a#delete_list-#{@todo_list.id}", :href => profile_task_list_path(@user, @todo_list), :content => "Delete")
+
+    @another_user.unfollow!(@todo_list)
+    visit profile_task_list_path(@user, @todo_list)
+    page.should have_selector("a#delete_list-#{@todo_list.id}", :href => profile_task_list_path(@user, @todo_list), :content => "Delete")
   end
 
 end
@@ -53,12 +64,14 @@ feature "Don't show remove link", %q{
   background do
     @user = FactoryGirl.create(:user)
     @todo_list = FactoryGirl.create(:todo_list, :user_id => @user.id)
+    @another_user = FactoryGirl.create(:user, :name => "Another User", :email => "another@toomuchtodo.com")
+    @another_user.follow!(@todo_list)
     integration_sign_in(@user)
   end
 
-  scenario "Show remove todo list" do
+  scenario "Don't show todo list remove link" do
     visit profile_task_list_path(@user, @todo_list)
-    page.should have_selector("a", :href => "a#delete_list-#{@todo_list.id}", :content => "Delete")
+    page.should_not have_selector("a#delete_list-#{@todo_list.id}", :href => profile_task_list_path(@user, @todo_list), :content => "Delete")
   end
 
 end

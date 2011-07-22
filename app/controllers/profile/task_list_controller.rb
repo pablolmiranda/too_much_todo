@@ -1,10 +1,11 @@
 class Profile::TaskListController < ApplicationController
   respond_to :html, :js
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [ :show ]
 
   def show
-    @user = User.find(params[:profile_id])
-    @todo_list = TodoList.find(params[:id]) 
+    @user = User.find(params[:profile_id]) rescue nil
+    @todo_list = TodoList.find(params[:id]) rescue nil
+    redirect_to root_path unless @user && @todo_list
   end
 
   def edit
@@ -23,6 +24,19 @@ class Profile::TaskListController < ApplicationController
           format.html { redirect_to profile_task_list_path(params[:profile_id], @todo_list)}
         end
       end
+    end
+  end
+
+  def destroy
+    todo_list = TodoList.find(params[:id])
+    if current_user == todo_list.user && !todo_list.has_followers?
+      todo_list.destroy
+      respond_with todo_list do |format|
+	flash[:notice] = "List #{todo_list.name} was destroyed"
+        format.html { redirect_to profile_path(current_user) }
+      end
+    else
+      redirect_to root_path
     end
   end
 

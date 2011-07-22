@@ -5,3 +5,7 @@
 <h2><%= @user.name %></h2>
 <h3>My ToDo Lists</h3>
 <%= render :partial => "shared/todo_list", :collection => @user.todo_lists %>
+<% if current_user == @user && @user.following %>
+  <h3>Following</h3>
+  <%= render :partial => "shared/todo_list", :collection => @user.following %>
+<% end %>

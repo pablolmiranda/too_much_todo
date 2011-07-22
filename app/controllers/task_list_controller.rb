@@ -22,8 +22,12 @@ class TaskListController < ApplicationController
   def follow
     @todo_list = TodoList.find(params[:id])
     if @todo_list
-      current_user.follow!(@todo_list)
-      flash[:notice] = "Now you are following the todo list #{@todo_list.name}"
+      if @todo_list.is_private?
+	flash[:notice] = "You can not follow this list!"
+      else
+        current_user.follow!(@todo_list)
+        flash[:notice] = "Now you are following the todo list #{@todo_list.name}."
+      end
       respond_with @todo_list do |format|
 	format.html { redirect_to profile_path(@todo_list.user) }
 	format.js

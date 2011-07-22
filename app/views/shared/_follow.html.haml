@@ -1,4 +1,4 @@
 .todo_list{ :class => "#{todo_list.is_private? ? "private":"public"}", :id => "todo_list-#{todo_list.id}"}
- = todo_list.name
+ = link_to todo_list.name, profile_task_list_path(todo_list.user, todo_list), :id => "todo_list_link-#{todo_list.id}"
  %span= link_to 'Follow', follow_task_list_path(todo_list), :id => "list-#{todo_list.id}", :remote => true
 

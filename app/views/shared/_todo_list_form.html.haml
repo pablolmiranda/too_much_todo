@@ -1,5 +1,6 @@
 = f.input :name 
-= f.input :is_private 
+- if !todo_list.has_followers?
+  = f.input :is_private 
 %div#todo_list_items
   = f.fields_for :items do |item_form| 
     = render :partial => "shared/todo_list_item_form", :locals => { :form => item_form } 

@@ -42,12 +42,14 @@ class Profile::TaskListController < ApplicationController
 
   protected
     def update_items(todo_list, items_attr)
-      items_attr.each do |key, attrs|
-	item = TodoListItem.find(attrs[:id]) rescue nil
-	if item
-	  item.udpate_attributes(attrs)
-	else
-	  todo_list.items.create(:text => attrs[:text])
+      if items_attr
+	items_attr.each do |key, attrs|
+	  item = TodoListItem.find(attrs[:id]) rescue nil
+	  if item
+	    item.udpate_attributes(attrs)
+	  else
+	    todo_list.items.create(:text => attrs[:text])
+	  end
 	end
       end
     end

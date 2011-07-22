@@ -16,7 +16,7 @@ class Profile::TaskListController < ApplicationController
   def update
     @todo_list = TodoList.find(params[:id])
     if @todo_list
-      items_attr = params[:task_list].delete(:todo_list_items_attributes)
+      items_attr = params[:task_list].delete(:items_attributes)
       if @todo_list.update_attributes(params[:task_list])
 	update_items(@todo_list, items_attr)
         respond_with @todo_list do |format|
@@ -47,8 +47,7 @@ class Profile::TaskListController < ApplicationController
 	if item
 	  item.udpate_attributes(attrs)
 	else
-	  p attrs
-	  todo_list.todo_list_items.create(:text => attrs[:text])
+	  todo_list.items.create(:text => attrs[:text])
 	end
       end
     end

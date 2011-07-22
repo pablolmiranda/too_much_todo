@@ -1,6 +1,0 @@
-<h2>Create ToDo list</h2>
-<%= simple_form_for @todo_list, {:as => :task_list, :url => task_list_index_path()} do |f| %>
-  <%= f.input :name %>
-  <%= f.input :is_private %>
-  <%= f.submit "Create" %>
-<% end %>

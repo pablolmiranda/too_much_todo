@@ -5,7 +5,7 @@ class TaskListController < ApplicationController
 
   def new
     @todo_list = current_user.todo_lists.build()
-    @todo_list.todo_list_items.build
+    @todo_list.items.build
   end
 
   def create

@@ -6,8 +6,9 @@ class TodoList < ActiveRecord::Base
     :foreign_key => "followed_list_id", 
     :class_name => "Relationship",
     :dependent => :destroy
-  has_many :todo_list_items, :dependent => :destroy
-  accepts_nested_attributes_for :todo_list_items, :allow_destroy => true
+
+  has_many :items, :dependent => :destroy, :class_name => "TodoListItem"
+  accepts_nested_attributes_for :items, :allow_destroy => true
 
   has_many :followers, 
     :through => :reverse_relationship

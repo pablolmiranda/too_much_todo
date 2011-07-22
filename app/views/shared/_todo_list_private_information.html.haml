@@ -1,0 +1,8 @@
+-if current_user == @todo_list.user
+ %h4
+  Followers: 
+  =@todo_list.followers.count
+ %h4= link_to "Edit", edit_profile_task_list_path(current_user, @todo_list)
+ -if !@todo_list.has_followers?
+  %h4= link_to "Delete", profile_task_list_path(current_user, @todo_list), :method => :delete, :id => "delete_list-#{@todo_list.id}"
+

@@ -1,8 +1,5 @@
 %h2= link_to @user.name, profile_path(@user)
 %h3= @todo_list.name
-=if current_user == @todo_list.user
- %h4= link_to "Edit", edit_profile_task_list_path(current_user, @todo_list)
- =if !@todo_list.has_followers?
-  %h4= link_to "Delete", profile_task_list_path(current_user, @todo_list), :method => :delete, :id => "delete_list-#{@todo_list.id}"
+= render :partial => "shared/todo_list_private_information"
 %div
- = render :partial => 'shared/todo_list_item', :collection => @todo_list.todo_list_items
+ = render :partial => 'shared/todo_list_item', :collection => @todo_list.items

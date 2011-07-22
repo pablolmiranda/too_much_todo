@@ -3,21 +3,28 @@
 <head>
   <title>Toomuchtodo</title>
   <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag 'bluprint/screen' %>
+  <!--[if lt IE 8]>
+    <%= stylesheet_link_tag 'bluprint/ie' %>
+  <![endif]-->
+  
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <% if(current_user) %>
-    <p class="ui_action"><%= link_to "My profile", profile_path(current_user) %></p> 
-    <p class="ui_action"><%= link_to "Create new list", new_task_list_path %></p> 
-    <p class="ui_action"><%= link_to "Edit profile", edit_user_registration_path %></p> 
-    <p class="ui_action"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></p> 
-  <% elsif(controller_name != "sessions" && !current_user) %>
-    <p class="ui_action"><%= link_to "Sign in", new_user_session_path %></p> 
-    <p class="ui_action"><%= link_to "Sign up", sign_up_path %></p> 
-  <% end %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <ul id="head_bar">
+    <% if(current_user) %>
+      <li class="ui_action"><%= link_to "#{current_user.name} ( profile )", profile_path(current_user) %></li> 
+      <li class="ui_action"><%= link_to "Create new list", new_task_list_path %></li> 
+      <li class="ui_action"><%= link_to "Edit profile", edit_user_registration_path %></li> 
+      <li class="ui_action"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li> 
+    <% elsif(controller_name != "sessions" && !current_user) %>
+      <li class="ui_action"><%= link_to "Sign in", new_user_session_path %></li> 
+      <li class="ui_action"><%= link_to "Sign up", sign_up_path %></li> 
+    <% end %>
+  </ul>
+  <div class="notice"><%= notice %></div>
+  <div class="alert"><%= alert %></div>
 
 <%= yield %>
 <%= debug(params) if Rails.env.development? %>

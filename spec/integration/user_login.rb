@@ -20,7 +20,7 @@ feature "Site sign in", %q{
     fill_in "Email", :with => @user.email
     fill_in "Password", :with => @user.password
     click_button "Sign in"
-    page.should have_selector("p.notice", :content => "You have signed up successfully")
+    page.should have_selector("div.notice", :content => "You have signed up successfully")
   end
 end
 
@@ -48,7 +48,7 @@ feature "Site sign up", %q{
     fill_in "Password", :with => @attr[:password]
     fill_in :user_password_confirmation, :with => @attr[:password_confirmation]
     click_button "Sign up"
-    page.should have_selector("p.notice", :content => "You have signed up successfully" )
+    page.should have_selector("div.notice", :content => "You have signed up successfully" )
   end
 end
 
@@ -86,14 +86,14 @@ describe "the signup process" do
       it "not sign me in with no information" do
 	visit "/sign_in"
 	click_button "Sign in"
-	page.should have_selector("p", :content => "Invalid email and password")
+	page.should have_selector("div.notice", :content => "Invalid email and password")
       end
 
       it "not sign me in with empty password" do
 	visit "/sign_in"
 	fill_in "Email", :with => "teste@teste.com"
 	click_button "Sign in"
-	page.should have_selector("p", :content => "Invalid email and password")
+	page.should have_selector("div.notice", :content => "Invalid email and password")
       end # not sign me in with empty password
 
     end # fail
@@ -125,7 +125,7 @@ describe "the signup process" do
       it "sign out a signed in user" do
 	visit "/"
 	click_link "Sign out"
-	page.should have_selector("p.notice", :content => "Signed out successfully")
+	page.should have_selector("div.notice", :content => "Signed out successfully")
       end
       
     end # sucess

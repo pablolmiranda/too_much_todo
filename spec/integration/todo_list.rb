@@ -20,7 +20,7 @@ feature "Create ToDo list", %q{
     visit "/task_list/new"
     fill_in "Name", :with => "My first list"
     click_button "Create"
-    page.should have_selector("p.notice", :content => "Todo list was successfully created")
+    page.should have_selector("div.notice", :content => "Todo list was successfully created")
   end
   
 end

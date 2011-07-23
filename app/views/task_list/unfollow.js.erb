@@ -1,2 +1,2 @@
 $("#todo_list-<%= @todo_list.id %>").html("<%= escape_javascript(render :partial => 'shared/follow', :object => @todo_list, :as => :todo_list) %>")
-$("p.notice").html("<%= escape_javascript( flash.delete(:notice)) %>")
+$("div.notice").show().html("<%= escape_javascript( flash.delete(:notice)) %>")

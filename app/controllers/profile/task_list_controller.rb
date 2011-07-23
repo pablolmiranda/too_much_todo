@@ -45,8 +45,15 @@ class Profile::TaskListController < ApplicationController
       if items_attr
 	items_attr.each do |key, attrs|
 	  item = TodoListItem.find(attrs[:id]) rescue nil
+	  p item
+	  p attrs
 	  if item
-	    item.udpate_attributes(attrs)
+	    if attrs[:_destroy].to_i == 1 
+	      item.destroy
+    	    else
+	      attrs.delete(:_destroy)
+	      item.update_attributes(attrs)
+	    end
 	  else
 	    todo_list.items.create(:text => attrs[:text])
 	  end

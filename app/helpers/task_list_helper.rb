@@ -12,8 +12,8 @@ module TaskListHelper
     if form_builder.object.new_record?
       link_to_function('remove', "$(this).parent().remove()"); 
     else
-      form_builder.hidden_field(:delete)
-      link_to_function('remove', "$(this).parent().hide()")
+      form_builder.hidden_field(:_destroy) +
+      link_to_function('remove', "$(this).parent().hide(); $(this).prev().val(1);")
     end
   end
 

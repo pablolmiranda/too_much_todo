@@ -15,7 +15,7 @@
   <ul id="head_bar">
     <% if(current_user) %>
       <li class="ui_action"><%= link_to "#{current_user.name} ( profile )", profile_path(current_user) %></li> 
-      <li class="ui_action"><%= link_to "Create new list", new_task_list_path %></li> 
+      <li class="ui_action"><%= link_to "Create new list", new_profile_task_list_path(current_user) %></li> 
       <li class="ui_action"><%= link_to "Edit profile", edit_user_registration_path %></li> 
       <li class="ui_action"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li> 
     <% elsif(controller_name != "sessions" && !current_user) %>

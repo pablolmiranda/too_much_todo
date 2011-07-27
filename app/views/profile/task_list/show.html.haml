@@ -1,4 +1,4 @@
-%h2= link_to @user.name, profile_path(@user)
+%h2= link_to @todo_list.user.name, profile_path(@todo_list.user)
 %h3
  = @todo_list.name
  %span.small= @todo_list.is_private? ? '( Private )':''

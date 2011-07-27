@@ -1,4 +1,4 @@
-class Profile::TaskListController < ApplicationController
+class Profile::TaskListsController < ApplicationController
   respond_to :html, :js
   before_filter :authenticate_user!, :except => [ :show ]
   before_filter :load_resource, :except => [:show, :new, :create]

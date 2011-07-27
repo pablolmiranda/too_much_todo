@@ -1,4 +1,0 @@
-%h2 Create ToDo list
-= simple_form_for @todo_list, {:as => :task_list, :url => profile_task_list_index_path(current_user)} do |f| 
-  = render :partial => "shared/todo_list_form", :locals => { :f => f, :todo_list => @todo_list} 
-  = f.submit "Create" 

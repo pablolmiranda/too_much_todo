@@ -1,7 +1,7 @@
 class Profile::TaskListsController < ApplicationController
   respond_to :html, :js
   before_filter :authenticate_user!, :except => [ :show ]
-  before_filter :load_resource, :except => [:show, :new, :create]
+  before_filter :load_resource, :except => [:show, :new, :create, :follow, :unfollow]
 
   def show
     @todo_list = TodoList.find(params[:id])

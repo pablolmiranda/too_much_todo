@@ -32,7 +32,7 @@ feature "Show todo list follow link", %q{
 
   scenario "Show ToDo list follow link" do
     visit profile_path(@another_user)
-    page.should have_selector("a#list-#{@todo_list.id}", :href => follow_profile_task_list_path(@todo_list.user, @todo_list), :content => "follow")
+    page.should have_selector("a#follow-list-#{@todo_list.id}", :href => follow_profile_task_list_path(@todo_list.user, @todo_list), :content => "follow")
   end
 end
 
@@ -52,7 +52,7 @@ feature "Show todo list unfollow link", %q{
 
   scenario "Show unfollow todo list link" do
     visit profile_path(@another_user)
-    page.body.should have_selector("a#list-#{@todo_list.id}", :href => unfollow_profile_task_list_path(@todo_list.user, @todo_list), :content => "Unfollow")
+    page.body.should have_selector("a#unfollow-list-#{@todo_list.id}", :href => unfollow_profile_task_list_path(@todo_list.user, @todo_list), :content => "Unfollow")
   end
 end # Show todo list unfollow link
 

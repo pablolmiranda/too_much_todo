@@ -101,3 +101,31 @@ feature "Show List", %q{
   end
 
 end
+
+feature "Follow/unfollow a list", %q{
+  In order to have or remove a todo list on my follows lists
+  As a user
+  I want to follow/unfollow a todo list
+} do
+
+  background do
+    @user = FactoryGirl.create(:user)
+    @another_user = FactoryGirl.create(:user, :email => Factory.next(:email))
+    @todo_list = FactoryGirl.create(:todo_list, :user_id => @another_user.id)
+    integration_sign_in(@user)
+  end
+
+  scenario "Follow a user todo list" do
+    visit profile_path(@another_user)
+    click_link "follow-list-#{@todo_list.id}"
+    page.should have_content("Now you are following the todo list #{@todo_list.name}."); 
+  end
+
+  scenario "Unfollow a user todo list" do
+    @user.follow!(@todo_list)
+    visit profile_path(@another_user)
+    click_link "unfollow-list-#{@todo_list.id}"
+    page.should have_content("You unfollow the todo list #{@todo_list.name}"); 
+  end
+
+end

@@ -3,7 +3,8 @@ Toomuchtodo::Application.routes.draw do
   resources :profile, :only => [ :show ] do
     resources :task_lists, :controller => "profile/task_lists" do
       member do
-	get :follow, :unfollow
+	post :follow
+	delete :unfollow
       end
     end 
   end

@@ -1,19 +1,24 @@
 FactoryGirl.define do
+
+  sequence :email do |n|
+    "user-#{n}@toomuchtodo.com"
+  end
+
   factory :user do
     name "Pablo Lacerda de Miranda"
-    email "pablo@toomuchtodo"
+    email "pablo@toomuchtodo.com"
     password "123456"
     password_confirmation "123456"
   end
 
   factory :todo_list do
-    user_id FactoryGirl.create(:user).id
+    user
     name "My first List"
     is_private false
   end
 
   factory :todo_list_item do
-    todo_list_id FactoryGirl.create(:todo_list).id
+    todo_list
     text "Simple task"
   end
 end

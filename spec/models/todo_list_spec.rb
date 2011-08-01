@@ -4,7 +4,7 @@ describe TodoList do
 
   before(:each) do
     @user = FactoryGirl.create(:user)
-    @attr = FactoryGirl.attributes_for(:todo_list)
+    @attr = FactoryGirl.attributes_for(:todo_list, :user_id => @user.id)
 
   end
 

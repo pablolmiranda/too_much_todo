@@ -7,13 +7,13 @@ FactoryGirl.define do
   end
 
   factory :todo_list do
-    user_id 1
+    user_id FactoryGirl.create(:user).id
     name "My first List"
     is_private false
   end
 
   factory :todo_list_item do
-    todo_list_id 1
+    todo_list_id FactoryGirl.create(:todo_list).id
     text "Simple task"
   end
 end
